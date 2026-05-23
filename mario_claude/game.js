@@ -201,8 +201,8 @@ class Player {
     this.el.classList.add('invincible');
   }
 
-  render(cameraX) {
-    this.el.style.left = (this.x - cameraX) + 'px';
+  render() {
+    this.el.style.left = this.x + 'px';
     this.el.style.top = this.y + 'px';
     if (!this.facingRight) {
       this.el.style.transform = 'scaleX(-1)';
@@ -251,8 +251,8 @@ class Enemy {
     this.el.className = 'enemy alive';
   }
 
-  render(cameraX) {
-    this.el.style.left = (this.x - cameraX) + 'px';
+  render() {
+    this.el.style.left = this.x + 'px';
     this.el.style.top = this.y + 'px';
   }
 }
@@ -285,9 +285,9 @@ class Coin {
     this.el.className = 'coin';
   }
 
-  render(cameraX) {
+  render() {
     if (this.collected) return;
-    this.el.style.left = (this.x - cameraX) + 'px';
+    this.el.style.left = this.x + 'px';
     this.el.style.top = this.y + 'px';
   }
 }
@@ -561,12 +561,12 @@ class MarioGame {
 
   // 全エンティティ描画
   renderAll() {
-    this.player.render(this.cameraX);
+    this.player.render();
     for (const enemy of this.enemies) {
-      enemy.render(this.cameraX);
+      enemy.render();
     }
     for (const coin of this.coins) {
-      coin.render(this.cameraX);
+      coin.render();
     }
   }
 
