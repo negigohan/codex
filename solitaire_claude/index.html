@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solitaire</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>Solitaire</h1>
+    <div id="status">Cards left: <span id="stock-count">0</span></div>
+    <button id="restart-btn">Restart</button>
+  </header>
+  <div id="board">
+    <!-- Top row -->
+    <div id="top-row">
+      <div id="stock-pile" class="pile"></div>
+      <div id="waste-pile" class="pile"></div>
+      <div id="foundations" class="foundations">
+        <div class="foundation-pile" data-foundation="0"></div>
+        <div class="foundation-pile" data-foundation="1"></div>
+        <div class="foundation-pile" data-foundation="2"></div>
+        <div class="foundation-pile" data-foundation="3"></div>
+      </div>
+    </div>
+    <!-- Tableau -->
+    <div id="tableau">
+      <div class="tableau-column" data-tableau="0"></div>
+      <div class="tableau-column" data-tableau="1"></div>
+      <div class="tableau-column" data-tableau="2"></div>
+      <div class="tableau-column" data-tableau="3"></div>
+      <div class="tableau-column" data-tableau="4"></div>
+      <div class="tableau-column" data-tableau="5"></div>
+      <div class="tableau-column" data-tableau="6"></div>
+    </div>
+  </div>
+</div>
+<div id="win-overlay" class="hidden">
+  <div class="win-content">
+    <h2>Congratulations!</h2>
+    <p>You completed the game!</p>
+    <button id="play-again-btn">Play Again</button>
+  </div>
+</div>
+<script src="game.js"></script>
+</body>
+</html>

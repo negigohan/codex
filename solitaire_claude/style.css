@@ -1,0 +1,207 @@
+/* solitaire_claude/style.css */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #1b5e20;
+  color: #fff;
+  min-height: 100vh;
+  user-select: none;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 16px;
+  background: rgba(0,0,0,0.25);
+}
+
+header h1 { font-size: 1.2rem; }
+
+#status { font-size: 0.9rem; flex: 1; text-align: center; }
+
+#restart-btn {
+  background: #fff;
+  color: #1b5e20;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#board {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Top row */
+#top-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.pile {
+  width: var(--card-w, 80px);
+  height: var(--card-h, 112px);
+  border: 2px dashed rgba(255,255,255,0.3);
+  border-radius: 6px;
+  position: relative;
+}
+
+.foundations {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.foundation-pile {
+  width: var(--card-w, 80px);
+  height: var(--card-h, 112px);
+  border: 2px dashed rgba(255,255,255,0.3);
+  border-radius: 6px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: rgba(255,255,255,0.25);
+}
+
+/* Tableau */
+#tableau {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.tableau-column {
+  width: var(--card-w, 80px);
+  min-height: var(--card-h, 112px);
+  position: relative;
+}
+
+/* Cards */
+.card {
+  position: absolute;
+  width: var(--card-w, 80px);
+  height: var(--card-h, 112px);
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  transition: box-shadow 0.15s;
+}
+
+.card.face-down {
+  background: linear-gradient(135deg, #1565c0, #0d47a1);
+  border: 2px solid #0d47a1;
+}
+
+.card.face-up {
+  background: #fff;
+  border: 2px solid #ccc;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4px;
+}
+
+.card.selected { box-shadow: 0 0 0 3px #ffeb3b, 0 2px 6px rgba(0,0,0,0.4); }
+
+.card .card-top { font-size: 0.85rem; line-height: 1; text-align: left; }
+.card .card-center { font-size: 1.8rem; text-align: center; flex: 1; display: flex; align-items: center; justify-content: center; }
+.card .card-bottom { font-size: 0.85rem; line-height: 1; text-align: right; transform: rotate(180deg); }
+
+.card.red { color: #d32f2f; }
+.card.black { color: #222; }
+
+/* Stock pile clickable indicator */
+#stock-pile.clickable::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+}
+
+/* Win overlay */
+#win-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+#win-overlay.hidden { display: none; }
+
+.win-content {
+  background: #fff;
+  color: #222;
+  padding: 32px 48px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.win-content h2 { margin-bottom: 8px; }
+.win-content p { margin-bottom: 16px; }
+
+#play-again-btn {
+  background: #1b5e20;
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* Tableau card spacing */
+.tableau-column .card { left: 0; }
+
+/* Foundation placeholder symbol */
+.foundation-pile::before {
+  content: attr(data-suit);
+  opacity: 0.3;
+}
+
+/* Responsive */
+:root {
+  --card-w: 80px;
+  --card-h: 112px;
+  --card-gap: 8px;
+  --tableau-offset: 22px;
+}
+
+@media (max-width: 700px) {
+  :root {
+    --card-w: 52px;
+    --card-h: 73px;
+    --card-gap: 4px;
+    --tableau-offset: 16px;
+  }
+
+  header h1 { font-size: 1rem; }
+  .card .card-top, .card .card-bottom { font-size: 0.65rem; }
+  .card .card-center { font-size: 1.2rem; }
+  #board { padding: 6px; gap: 6px; }
+  #top-row { gap: 6px; }
+  .foundations { gap: 4px; }
+  #tableau { gap: 4px; }
+}
+
+@media (max-width: 420px) {
+  :root {
+    --card-w: 44px;
+    --card-h: 62px;
+    --tableau-offset: 13px;
+  }
+  .card .card-top, .card .card-bottom { font-size: 0.55rem; }
+  .card .card-center { font-size: 1rem; }
+}
