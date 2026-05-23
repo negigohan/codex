@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>マリオ風プラットフォームゲーム</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- HUD: 画面上部に常時表示 -->
+  <div id="hud">
+    <span id="score-display">コイン: 0</span>
+    <span id="lives-display">ライフ: 3</span>
+  </div>
+
+  <!-- ゲームビューポート -->
+  <div id="game-area">
+    <!-- スクロール可能ワールド -->
+    <div id="game-world"></div>
+  </div>
+
+  <!-- スタート画面 -->
+  <div id="start-screen" class="overlay active">
+    <div class="overlay-content">
+      <h1>🍄 マリオ風プラットフォーム</h1>
+      <p>矢印キーで移動、上矢印 / スペースでジャンプ</p>
+      <p class="hint">エネミーを上から踏むと倒せます！</p>
+      <button id="start-btn">スタート</button>
+    </div>
+  </div>
+
+  <!-- ゲームオーバー画面 -->
+  <div id="gameover-screen" class="overlay">
+    <div class="overlay-content">
+      <h1>💥 ゲームオーバー</h1>
+      <p>コイン: <span id="go-score">0</span></p>
+      <button id="retry-btn-go">もう一度</button>
+    </div>
+  </div>
+
+  <!-- ステージクリア画面 -->
+  <div id="clear-screen" class="overlay">
+    <div class="overlay-content">
+      <h1>🎉 ステージクリア！</h1>
+      <p>コイン: <span id="clear-score">0</span></p>
+      <button id="retry-btn-clear">もう一度</button>
+    </div>
+  </div>
+
+  <!-- モバイルタッチ操作 -->
+  <div id="touch-controls">
+    <button id="touch-left" class="touch-btn">←</button>
+    <button id="touch-jump" class="touch-btn">↑</button>
+    <button id="touch-right" class="touch-btn">→</button>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
